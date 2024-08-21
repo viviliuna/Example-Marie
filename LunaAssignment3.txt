@@ -1,0 +1,194 @@
+﻿/This code was written by: VIVIANA LUNA
+/Assignment 3
+/CGS 3269
+
+/initializing
+Clear
+Store a
+Store b
+Store c
+Store d
+Store e
+Store temp1
+Store temp2
+Store ans1
+Store ans2
+Store ans3
+Store finalans
+Store result
+
+/section to check neg and 0
+/check if input a is 0
+Input /take in a
+Store a /store a
+Load a /load input a
+Skipcond 400 / this skipcond checks if it's 0
+Jump checkneg /jump to check if neg
+Load zero /ready zero for output
+Output /print 0
+Jump EndProgram/end program
+
+/check if input a is negative
+checkneg, Load a / load input a
+Skipcond 000 /check if a is negative
+Jump nextinput /if not, jump to next input section
+Load zero /ready 0 for output
+Output /print 0
+Jump EndProgram/end program
+
+/input b section
+/check if user input is 0
+nextinput, Input /take in b
+Store b /store b
+Load b /load input b
+Skipcond 400 / this skipcond checks if it's 0
+Jump checkneg2 /jump to next negative check section
+Load zero /readying 0 for output
+Output /print 0 to screen
+Jump EndProgram/end program
+
+/check if input is neg
+checkneg2, Load b /put b in AC
+Skipcond 000 /check if a is negative
+Jump nextinput1 /if not, jump to next input section
+Load zero /ready 0 for output
+Output /print 0
+Jump EndProgram/end program
+
+/input c section
+/check if input is 0
+nextinput1, Input /take in c
+Store c /store c
+Load c /put c in AC
+Skipcond 400 / this skipcond checks if it's 0
+Jump checkneg3 /jump to next negative check section
+Load zero /readying 0 for output
+Output /print 0 to screen
+Jump EndProgram/end program
+
+/check if input is neg
+checkneg3, Load c /put c in AC
+Skipcond 000 /check if a is negative
+Jump nextinput2 /if not, jump to next input section
+Load zero /ready 0 for output
+Output /print 0
+Jump EndProgram/end program
+
+/input d section
+/check if input is 0
+nextinput2, Input /take in d
+Store d /store d
+Load d /put d in AC
+Skipcond 400 / this skipcond checks if it's 0
+Jump checkneg4 /jump to next negative check section
+Load zero /readying 0 for output
+Output /print 0 to screen
+Jump EndProgram/end program
+
+/check if input is neg
+checkneg4, Load d /put d in AC
+Skipcond 000 /check if a is negative
+Jump nextinput3 /if not, jump to next input section
+Load zero /ready 0 for output
+Output /print 0
+Jump EndProgram/end program
+
+/input e section
+/check if input is 0
+nextinput3,Input /take in e
+Store e /store e
+Load e /put e in AC
+Skipcond 400 / this skipcond checks if it's 0
+Jump checkneg5 /jump to next negative check section
+Load zero /readying 0 for output
+Output /print 0 to screen
+Jump EndProgram/end program
+
+/check if input is neg
+checkneg5, Load e
+Skipcond 000 /check if a is negative
+Jump tempsection /if not, jump to tempsection
+Load zero /ready 0 for output
+Output /print 0
+Jump EndProgram/end program
+
+/temp section for a and b
+tempsection, Load a /put a in AC
+Store temp1 /saving a as temp1 for multi subroutine
+Load b /put b in AC
+Store temp2 /saving b as temp2 for multi subroutine
+
+/jump to subroutine for first calculation
+JnS multi /jump to subroutine
+load result /come back from subr
+Store ans1 /save in ans1
+
+/temp section for c and d
+load c /put c in AC
+Store temp1 /store as temp1
+load d /put d in AC
+Store temp2 /store as temp2
+
+/jump to subroutine for second calculation
+JnS multi /jump to subroutine
+Load result /come back from subr, save in ans2
+Store ans2 /save in ans2
+
+/temp section for ans1 and ans2
+load ans1 /put ans1 in AC
+Store temp1 /save as temp1 for subroutine
+load ans2 /put ans2 in AC
+Store temp2 /save as temp2 for subroutine
+
+/jump to subroutine for third calculation
+JnS multi /call on subroutine
+Load result /come back from subr, save in ans2
+Store ans3 /store in ans3
+
+/final calculation for all * e
+load ans3 /put ans3 in AC
+Store temp1 /set as temp1 for subroutine
+load e /put e in AC
+Store temp2 /set as temp2 for subroutine
+
+/final jump to subroutine for last calculation
+JnS multi /jump to subroutine
+Load result /come back from subr, save in ans2
+Store finalans /store result as finalans
+
+/output final answer to screen
+Load finalans /put finalans in AC
+Output /print to screen
+Jump EndProgram /jump to halt statement
+EndProgram, Halt
+
+/subroutine
+multi, hex 0
+clear /clear AC
+store result /result now set to 0
+loop, load result /beginning of loop, put result in AC
+add temp1 /add temp1 as first multiplication
+Store result /store as result
+Load temp2 /put temp2 in AC
+Subt one /subtract one also as part of multiplication
+Store temp2 /store as temp2
+Skipcond 400 /check if temp2 is 0
+Jump loop /jump to top of loop if not 0
+JumpI multi /jump back to whatever line called the subroutine
+
+
+/variable declaration
+a, DEC 0
+b, DEC 0
+c, DEC 0
+d, DEC 0
+e, DEC 0
+temp1, DEC 0
+temp2, DEC 0
+ans1, DEC 0
+ans2, DEC 0
+ans3, DEC 0
+finalans, DEC 0
+result, DEC 0
+one, DEC 1
+zero, DEC 0
